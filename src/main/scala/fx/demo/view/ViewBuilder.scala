@@ -2,24 +2,19 @@ package fx.demo.view
 
 import fx.demo.model.Model
 
-import javafx.scene.layout.Region
-import javafx.util.Builder
 import scalafx.beans.property.{BooleanProperty, StringProperty}
 import scalafx.geometry.Insets
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, Label, TextField}
-import scalafx.scene.layout.{BorderPane, HBox, VBox}
+import scalafx.scene.layout.{BorderPane, HBox, Region, VBox}
 
 class ViewBuilder(private val model: Model, private val actionHandler: (() => Unit) => Unit) extends Builder[Region]:
-
   override def build(): Region =
-    val result = new BorderPane:
+    new BorderPane:
       center = mainBox
       bottom = button
       minWidth = 300
       minHeight = 200
-
-    result.delegate
 
   private def mainBox: Node =
     new VBox:
