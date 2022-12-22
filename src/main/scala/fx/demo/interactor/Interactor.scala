@@ -21,6 +21,6 @@ class Interactor(private val model: Model):
   def updateChangeCount(): Unit =
     changeCount += 1
 
-  private def createModelBindings() =
+  private def createModelBindings(): Unit =
     model.bindProperty3(model.property1Property =!= "")
 end Interactor

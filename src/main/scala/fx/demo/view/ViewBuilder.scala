@@ -4,12 +4,11 @@ import fx.demo.model.Model
 
 import javafx.scene.layout.Region
 import javafx.util.Builder
-
 import scalafx.beans.property.{BooleanProperty, StringProperty}
 import scalafx.geometry.Insets
+import scalafx.scene.Node
 import scalafx.scene.control.{Button, Label, TextField}
 import scalafx.scene.layout.{BorderPane, HBox, VBox}
-import scalafx.scene.Node
 
 class ViewBuilder(private val model: Model, private val actionHandler: (() => Unit) => Unit) extends Builder[Region]:
 
@@ -31,9 +30,10 @@ class ViewBuilder(private val model: Model, private val actionHandler: (() => Un
 
   private def button: Node =
     new Button("Save"):
-      val saveRunning = BooleanProperty(false)
+      private val saveRunning = BooleanProperty(false)
       disable <== !model.property3Property || saveRunning
-      onAction = e =>
+      defaultButton = true
+      onAction = _ =>
         saveRunning.value = true
         actionHandler(() => saveRunning.value = false)
 

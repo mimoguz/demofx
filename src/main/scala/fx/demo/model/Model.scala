@@ -1,8 +1,8 @@
 package fx.demo.model
 
-import scalafx.beans.property.*
-import scalafx.beans.binding.BooleanBinding
 import scalafx.Includes.*
+import scalafx.beans.binding.BooleanBinding
+import scalafx.beans.property.{BooleanProperty, ReadOnlyBooleanProperty, StringProperty}
 
 class Model:
   val property1Property: StringProperty = StringProperty("")
@@ -15,4 +15,4 @@ class Model:
 
   private val _property3: BooleanProperty = BooleanProperty(false)
   def property3Property: ReadOnlyBooleanProperty = _property3
-  def bindProperty3(binding: BooleanBinding) = _property3 <== binding
+  def bindProperty3(binding: BooleanBinding): Unit = _property3 <== binding

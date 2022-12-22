@@ -3,13 +3,12 @@ package fx.demo.controller
 import fx.demo.interactor.Interactor
 import fx.demo.model.Model
 import fx.demo.view.ViewBuilder
+import scalafx.Includes.*
+import scalafx.scene.layout.Region
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
-
-import scalafx.Includes.*
-import scalafx.scene.layout.Region
 
 class Controller:
   private val model = Model()
