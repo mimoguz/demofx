@@ -1,5 +1,6 @@
 package fx.demo.view
 
+import fx.demo.Builder
 import fx.demo.model.Model
 
 import scalafx.beans.property.{BooleanProperty, StringProperty}

@@ -1,4 +1,4 @@
-package fx.demo.view
+package fx.demo
 
 import scalafx.scene.Node
 
