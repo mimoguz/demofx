@@ -3,7 +3,7 @@ package fx.demo.view
 import fx.demo.model.Model
 
 import scalafx.beans.property.{BooleanProperty, StringProperty}
-import scalafx.geometry.Insets
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, Label, TextField}
 import scalafx.scene.layout.{BorderPane, HBox, Region, VBox}
@@ -24,13 +24,15 @@ class ViewBuilder(private val model: Model, private val actionHandler: (() => Un
       children += new HBox(6.0, new Label("Value 2"), createBoundTextField(model.property2Property))
 
   private def button: Node =
-    new Button("Save"):
-      private val saveRunning = BooleanProperty(false)
-      disable <== !model.property3Property || saveRunning
-      defaultButton = true
-      onAction = _ =>
-        saveRunning.value = true
-        actionHandler(() => saveRunning.value = false)
+    new HBox:
+      alignment = Pos.CenterRight
+      children += new Button("Save"):
+        private val saveRunning = BooleanProperty(false)
+        disable <== !model.property3Property || saveRunning
+        defaultButton = true
+        onAction = e =>
+          saveRunning.value = true
+          actionHandler(() => saveRunning.value = false)
 
   private def createBoundTextField(boundProperty: StringProperty): Node =
     new TextField:
