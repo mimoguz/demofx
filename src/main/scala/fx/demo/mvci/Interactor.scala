@@ -1,6 +1,5 @@
-package fx.demo.interactor
+package fx.demo.mvci
 
-import fx.demo.model.Model
 import fx.demo.service.*
 
 class Interactor(private val model: Model):

@@ -1,6 +1,4 @@
-package fx.demo.view
-
-import fx.demo.model.Model
+package fx.demo.mvci
 
 import scalafx.beans.property.{BooleanProperty, StringProperty}
 import scalafx.geometry.{Insets, Pos}

@@ -1,7 +1,6 @@
 package fx.demo
 
-import fx.demo.controller.Controller
-
+import fx.demo.mvci.Controller
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene

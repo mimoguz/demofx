@@ -1,4 +1,4 @@
-package fx.demo.model
+package fx.demo.mvci
 
 import scalafx.Includes.*
 import scalafx.beans.binding.BooleanBinding

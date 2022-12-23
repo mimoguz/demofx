@@ -1,8 +1,4 @@
-package fx.demo.controller
-
-import fx.demo.interactor.Interactor
-import fx.demo.model.Model
-import fx.demo.view.ViewBuilder
+package fx.demo.mvci
 
 import scalafx.Includes.*
 import scalafx.scene.layout.Region
