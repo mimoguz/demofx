@@ -11,7 +11,7 @@ class Interactor(private val model: Model):
   createModelBindings()
 
   def saveData(): Unit =
-    domainObject = Option(service.saveDataSomeWhere(s"${model.property1} --> $changeCount"))
+    domainObject = Option(service.saveDataSomewhere(s"${model.property1} --> $changeCount"))
 
   def updateModelAfterSave(): Unit =
     model.property1 = ""
