@@ -14,6 +14,10 @@ lazy val root = project
     scalaVersion := scala3Version,
     scalacOptions += "-indent",
     run / fork := !debugMode.value,
-    libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test,
-    libraryDependencies += "org.scalafx" %% "scalafx" % "19.0.0-R30"
+    libraryDependencies ++= Seq(
+      "org.scalameta" %% "munit" % "0.7.29" % Test,
+      "org.scalafx" %% "scalafx" % "19.0.0-R30",
+      "com.lihaoyi" %% "ujson" % "2.0.0",
+      "com.lihaoyi" %% "requests" % "0.7.1"
+    )
   )
