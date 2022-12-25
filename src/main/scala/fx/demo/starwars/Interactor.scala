@@ -11,6 +11,8 @@ class Interactor(viewModel: Model):
   private var planet: Option[ujson.Value] = None
 
   def lookupPerson(): Unit =
+    person = None
+    planet = None
     val api = Api()
     for
       people <- api.get("people", Option(viewModel.name.value)).toOption
