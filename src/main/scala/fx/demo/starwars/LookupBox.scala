@@ -1,9 +1,11 @@
 package fx.demo.starwars
 
+import fx.demo.Util.by
+
+import scalafx.Includes.*
 import scalafx.concurrent.Task
 import scalafx.scene.control.{Button, Label, TextField}
 import scalafx.scene.layout.{HBox, Region, StackPane}
-import scalafx.Includes.*
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -25,14 +27,17 @@ class LookupBox extends StackPane():
     }
 
   private def view: Region =
-    new HBox:
-      spacing = 6.0
-      children += Label("Name: ")
-      children += new TextField:
-        styleClass += "prompt"
-        text <==> viewModel.name
-      children += new Button("Search"):
-        onAction = { _ =>
+    new HBox().by { box =>
+      box.spacing = 6.0
+      box.children += Label("Name: ")
+      box.children += new TextField by { txt =>
+        txt.styleClass += "prompt"
+        txt.text <==> viewModel.name
+      }
+      box.children += new Button("Search") by { btn =>
+        btn.onAction = _ =>
           disable = true
           searchForCharacter(() => disable = false)
-        }
+      }
+    }
+end LookupBox
