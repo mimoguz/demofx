@@ -12,14 +12,13 @@ class Interactor(viewModel: Model):
 
   def lookupPerson(): Unit =
     val api = Api()
-    api.get("people", Option(viewModel.name.value)) match
-      case ApiResult.Error(code, msg) => println(s"Error $code: $msg")
-      case ApiResult.Value(people) =>
-        Try(people("results").asInstanceOf[ujson.Arr](0)) match
-          case Success(prs) =>
-            person = Option(prs)
-            planet = api.getEntry(prs("homeworld").value.toString).toOption
-          case Failure(_) => ()
+    for
+      people <- api.get("people", Option(viewModel.name.value)).toOption
+      prs <- Try(people("results").asInstanceOf[ujson.Arr](0)).toOption
+      homePlanet <- api.getEntry(prs("homeworld").value.toString).toOption
+    do
+      person = Option(prs)
+      planet = Option(homePlanet)
 
   def updateModelAfterLookup(): Unit =
     viewModel.name.value = person.map(_("name").value.toString).getOrElse("Nothing Found")
